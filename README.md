@@ -81,3 +81,8 @@ iconfont:
 ## 常见问题
 
 1. [iconfont command not found](https://dart.dev/tools/pub/cmd/pub-global#running-a-script)
+
+## 感谢
+
+* [iconfont_flutter](https://github.com/chuanci/iconfont)
+* [voca.js](https://github.com/panzerdp/voca)
