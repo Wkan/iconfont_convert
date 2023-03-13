@@ -1,0 +1,39 @@
+name: iconfont_convert_example
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.17.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  iconfont_convert:
+    path: ..
+
+flutter:
+  fonts:
+    - family: iconfont
+      fonts:
+        - asset: assets/iconfont/test_icons.ttf
+  uses-material-design: true
+
+iconfont:
+  - icons:
+      - url: //at.alicdn.com/t/c/font_3892650_94qckhszrmg.css
+        icon_name: test_icons
+        icon_class: TestIcons
+    font_assets_path: assets/iconfont/
+    icon_class_path: lib/icons/
