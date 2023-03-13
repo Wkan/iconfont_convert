@@ -95,7 +95,7 @@ class PubTemplate {
     }
 
     final assertContent = _getAssetContent(iconfontPath, iconfont["fonts"]);
-    if (!assertContent.trim().isEmpty) {
+    if (assertContent.trim().isNotEmpty) {
       lines.insert(
           _getLineIndex(
             lines,
@@ -107,9 +107,7 @@ class PubTemplate {
   }
 
   static String _getAssetContent(List<String> iconfontPath, [List? mFonts]) {
-    if (mFonts == null) {
-      mFonts = [];
-    }
+    mFonts ??= [];
     List list = iconfontPath;
     Set set = iconfontPath.toSet()..removeAll(mFonts.map((e) => e['asset']));
     list = set.toList();

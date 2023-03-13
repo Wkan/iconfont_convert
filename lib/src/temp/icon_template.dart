@@ -95,6 +95,6 @@ $previewIconContent
   static String _buildPreviewIcon(IconFontGlyph glyphs, String iconClass) {
     String iconName = Utils.snake("${glyphs.fontClass}");
 
-    return '''    _PreviewIcon(${iconClass}.${iconName}, "${iconName}", "${glyphs.name}"),''';
+    return '''    _PreviewIcon($iconClass.$iconName, "$iconName", "${glyphs.name}"),''';
   }
 }

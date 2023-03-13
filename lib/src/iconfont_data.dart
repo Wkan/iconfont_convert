@@ -88,7 +88,7 @@ class IconFontGlyph {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['icon_id'] = iconId;
     data['font_class'] = fontClass;
     data['unicode'] = unicode;
