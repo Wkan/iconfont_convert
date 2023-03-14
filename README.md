@@ -1,4 +1,4 @@
-# iconfont-convert [![Pub](https://img.shields.io/pub/v/iconfont-convert.svg?style=flat-square)](https://pub.dartlang.org/packages/iconfont-convert)
+# iconfont_convert [![Pub](https://img.shields.io/pub/v/iconfont_convert.svg?style=flat-square)](https://pub.dartlang.org/packages/iconfont_convert)
 
 帮助你从 [www.iconfont.cn](https://www.iconfont.cn/) 生成 `IconData`
 
