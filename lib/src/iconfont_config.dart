@@ -63,7 +63,12 @@ class IconFontYamlConfigItem {
   String? iconClass;
   String? package;
 
-  IconFontYamlConfigItem({this.url, this.iconName, this.iconClass, this.package});
+  IconFontYamlConfigItem({
+    this.url,
+    this.iconName,
+    this.iconClass,
+    this.package,
+  });
 
   IconFontYamlConfigItem.fromJson(Map<String, dynamic> json) {
     url = json['url'];

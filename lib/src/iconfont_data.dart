@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:iconfont_convert/src/utils.dart';
+
 import '../iconfont_convert.dart';
 
 class IconFontData {
@@ -77,7 +78,13 @@ class IconFontGlyph {
   int? unicodeDecimal;
   String? name;
 
-  IconFontGlyph({this.iconId, this.fontClass, this.unicode, this.unicodeDecimal, this.name});
+  IconFontGlyph({
+    this.iconId,
+    this.fontClass,
+    this.unicode,
+    this.unicodeDecimal,
+    this.name,
+  });
 
   IconFontGlyph.fromJson(Map<String, dynamic> json) {
     iconId = json['icon_id'];

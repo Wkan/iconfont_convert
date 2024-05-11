@@ -115,9 +115,8 @@ class PubTemplate {
   }
 
   static int _getLineIndex(List<String> lines, String reg, int indent) {
-    int line = lines
-        .sublist(_index)
-        .indexWhere((element) => RegExp("^${_getIndentString(reg, indent)}.*\$").hasMatch(element));
+    int line = lines.sublist(_index).indexWhere((element) =>
+        RegExp("^${_getIndentString(reg, indent)}.*\$").hasMatch(element));
 
     if (line == -1) {
       throw Exception("pubspec.yaml exception");

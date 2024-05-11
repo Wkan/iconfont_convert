@@ -5,12 +5,13 @@ import 'package:iconfont_convert/src/iconfont_data.dart';
 import 'package:iconfont_convert/src/pub.dart';
 import 'package:iconfont_convert/src/temp/icon_template.dart';
 import 'package:iconfont_convert/src/utils.dart';
-import 'package:yaml/yaml.dart';
 import 'package:path/path.dart' as path;
+import 'package:yaml/yaml.dart';
 
 import 'constants.dart';
 import 'iconfont_config.dart';
 
+/// 构建 iconfont
 class IconFontBuilder {
   static _build(IconFontConfig config) async {
     if (config.url.isNotEmpty) {
@@ -35,7 +36,8 @@ class IconFontBuilder {
   }
 
   static buildFromYamlConfig(String configPath) async {
-    var yamlConfig = jsonDecode(jsonEncode(loadYaml(File(configPath).readAsStringSync())));
+    var yamlConfig =
+        jsonDecode(jsonEncode(loadYaml(File(configPath).readAsStringSync())));
 
     if (path.basename(configPath) == Constants.pubspecConfig) {
       yamlConfig = yamlConfig["iconfont"] ?? [];
@@ -43,7 +45,8 @@ class IconFontBuilder {
 
     await Future.forEach(yamlConfig, (e) async {
       final c = IconFontYamlConfig.fromJson(jsonDecode(jsonEncode(e)));
-      await Future.forEach<IconFontYamlConfigItem>(c.icons ?? [], (configItem) async {
+      await Future.forEach<IconFontYamlConfigItem>(c.icons ?? [],
+          (configItem) async {
         if (configItem.url == null || configItem.url!.isEmpty) {
           throw ArgumentError("url is empty");
         }
@@ -53,7 +56,8 @@ class IconFontBuilder {
         }
 
         if (configItem.iconClass == null || configItem.iconClass!.isEmpty) {
-          configItem.iconClass = Utils.camel(configItem.iconName!, pascalCase: true);
+          configItem.iconClass =
+              Utils.camel(configItem.iconName!, pascalCase: true);
         }
 
         await _build(IconFontConfig(

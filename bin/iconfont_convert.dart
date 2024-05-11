@@ -4,7 +4,10 @@ import 'package:iconfont_convert/src/pub.dart';
 
 void main(List<String> args) async {
   final ArgParser argParser = ArgParser()
-    ..addOption('config', abbr: 'c', defaultsTo: Constants.pubspecConfig, help: "config file path")
+    ..addOption('config',
+        abbr: 'c',
+        defaultsTo: Constants.pubspecConfig,
+        help: "config file path")
     ..addFlag('help', abbr: 'h', negatable: false, help: "help");
 
   ArgResults argResults = argParser.parse(args);

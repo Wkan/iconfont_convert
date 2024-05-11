@@ -1,16 +1,20 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
-import 'dart:io';
+import 'package:path/path.dart' as path;
 
 class Utils {
   /// camel to snake
   static String snake(String str, {String separator = "_"}) {
     RegExp reg = RegExp(
         r"[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])|\d+");
-    return reg.allMatches(str).map((e) => e.group(0)?.toLowerCase()).where((e) => e != null).join(separator);
+    return reg
+        .allMatches(str)
+        .map((e) => e.group(0)?.toLowerCase())
+        .where((e) => e != null)
+        .join(separator);
   }
 
   /// snake to camel
@@ -59,7 +63,8 @@ class Utils {
   static Future<String> httpGetContent(String url) async {
     final resp = await _httpGetResponse(url);
 
-    if (resp.headers.containsKey("content-type") && resp.headers["content-type"]!.contains("application/json")) {
+    if (resp.headers.containsKey("content-type") &&
+        resp.headers["content-type"]!.contains("application/json")) {
       Utf8Decoder utf8decoder = const Utf8Decoder();
       return utf8decoder.convert(resp.bodyBytes);
     }
