@@ -28,9 +28,9 @@ class IconFontData {
     final glyphs = <IconFontGlyph>[];
     final jsonGlyphs = json['glyphs'];
     if (jsonGlyphs is List) {
-      jsonGlyphs.forEach((v) {
-        glyphs.add(IconFontGlyph.fromJson(v));
-      });
+      for (var json in jsonGlyphs) {
+        glyphs.add(IconFontGlyph.fromJson(json));
+      }
     }
 
     return IconFontData(
@@ -45,7 +45,7 @@ class IconFontData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['font_family'] = fontFamily;
