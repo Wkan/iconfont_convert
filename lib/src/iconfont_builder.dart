@@ -11,7 +11,7 @@ import 'package:yaml/yaml.dart';
 import 'constants.dart';
 import 'iconfont_config.dart';
 
-/// 构建 iconfont
+/// 构建图标文件
 class IconFontBuilder {
   static _build(IconFontConfig config) async {
     if (config.url.isNotEmpty) {
@@ -21,6 +21,7 @@ class IconFontBuilder {
     }
   }
 
+  /// 保存图标类
   static _saveIconClass(IconFontConfig config, IconFontData data) {
     String content = IconTemplate.build(config.iconClass, data);
 
@@ -35,6 +36,7 @@ class IconFontBuilder {
     Utils.writeToFile(iconClassSavePath, content);
   }
 
+  /// 从 yaml 配置构建
   static buildFromYamlConfig(String configPath) async {
     var yamlConfig =
         jsonDecode(jsonEncode(loadYaml(File(configPath).readAsStringSync())));

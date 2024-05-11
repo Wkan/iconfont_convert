@@ -1,5 +1,6 @@
 import 'package:path/path.dart' as path;
 
+/// 构建图标字体的配置信息
 class IconFontConfig {
   final String fontAssetsPath;
   final String iconClassPath;
@@ -17,17 +18,20 @@ class IconFontConfig {
     this.fontPackage,
   });
 
+  /// 保存字体文件的路径
   String get ttfSavePath {
     final filename = "$iconName.ttf";
     return path.joinAll([fontAssetsPath, filename]);
   }
 
+  /// 保存icon类的路径
   String get iconClassSavePath {
     final filename = "$iconName.dart";
     return path.joinAll([iconClassPath, filename]);
   }
 }
 
+/// 从 yaml 文件中解析出的配置信息
 class IconFontYamlConfig {
   String? fontAssetsPath;
   String? iconClassPath;
@@ -57,6 +61,7 @@ class IconFontYamlConfig {
   }
 }
 
+/// 单个图标字体配置信息
 class IconFontYamlConfigItem {
   String? url;
   String? iconName;

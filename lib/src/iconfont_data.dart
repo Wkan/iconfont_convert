@@ -4,6 +4,7 @@ import 'package:iconfont_convert/src/utils.dart';
 
 import '../iconfont_convert.dart';
 
+/// 图标字体数据
 class IconFontData {
   String id;
   String name;
@@ -56,7 +57,9 @@ class IconFontData {
   }
 
   static Future<IconFontData> from(IconFontConfig config) async {
-    final jsonUrl = config.url.replaceAll(r"?.*", "").replaceAll(RegExp(r"\.(js|css|ttf)$"), ".json");
+    final jsonUrl = config.url
+        .replaceAll(r"?.*", "")
+        .replaceAll(RegExp(r"\.(js|css|ttf)$"), ".json");
     final ttfUrl = jsonUrl.replaceAll(RegExp(r"\.json$"), ".ttf");
 
     print("download json content from $jsonUrl");

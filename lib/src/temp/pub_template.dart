@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:iconfont_convert/src/data.dart';
+import 'package:iconfont_convert/src/pub.dart';
 import 'package:yaml/yaml.dart';
 
 class PubTemplate {
@@ -14,8 +14,8 @@ class PubTemplate {
     lines = contents.split('\n');
     pubJson = json.decode(json.encode(loadYaml(contents)));
 
-    await Future.forEach(Data.pubAsserts.keys, ((String k) async {
-      build(k, Data.pubAsserts[k]!);
+    await Future.forEach(Pub.pubAsserts.keys, ((String k) async {
+      build(k, Pub.pubAsserts[k]!);
       pubJson = json.decode(json.encode(loadYaml(lines.join("\n"))));
     }));
 
