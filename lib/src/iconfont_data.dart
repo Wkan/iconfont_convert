@@ -70,7 +70,8 @@ class IconFontData {
     print("download ttf file from $ttfUrl to $ttfSavePath");
     await Utils.downloadToFile(ttfSavePath, ttfUrl);
 
-    return IconFontData.fromJson(json.decode(jsonContent));
+    return IconFontData.fromJson(json.decode(jsonContent))
+      ..fontPackage = config.fontPackage;
   }
 }
 
