@@ -1,6 +1,6 @@
 name: iconfont_convert
 description: A library to generate Flutter IconData Class from www.iconfont.cn
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/wkan/iconfont_convert
 
 environment:
