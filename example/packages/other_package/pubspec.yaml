@@ -1,0 +1,37 @@
+name: other_package
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  iconfont_convert:
+    path: ../../..
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  fonts:
+    - family: iconfont2
+      fonts:
+        - asset: assets/iconfont/other_test_icons.ttf
+
+
+iconfont:
+  - icons:
+      - url: //at.alicdn.com/t/c/font_4620020_197c3lqemwg.css
+        icon_name: other_test_icons
+        icon_class: OtherTestIcons
+        package: other_package
+    font_assets_path: assets/iconfont/
+    icon_class_path: lib/icons/

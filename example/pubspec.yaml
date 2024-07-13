@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  other_package:
+    path: ./packages/other_package
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +34,7 @@ flutter:
 
 iconfont:
   - icons:
-      - url: //at.alicdn.com/t/c/font_3892650_94qckhszrmg.css
+      - url: //at.alicdn.com/t/c/font_3892650_zihkyvr4dq.css
         icon_name: test_icons
         icon_class: TestIcons
     font_assets_path: assets/iconfont/
