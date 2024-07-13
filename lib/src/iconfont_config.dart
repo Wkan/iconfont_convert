@@ -7,6 +7,7 @@ class IconFontConfig {
   final String iconName;
   final String iconClass;
   final String url;
+  final String? fontFamily;
   final String? fontPackage;
 
   const IconFontConfig({
@@ -15,6 +16,7 @@ class IconFontConfig {
     required this.iconName,
     required this.iconClass,
     required this.url,
+    this.fontFamily,
     this.fontPackage,
   });
 
@@ -66,12 +68,14 @@ class IconFontYamlConfigItem {
   String? url;
   String? iconName;
   String? iconClass;
+  String? fontFamily;
   String? package;
 
   IconFontYamlConfigItem({
     this.url,
     this.iconName,
     this.iconClass,
+    this.fontFamily,
     this.package,
   });
 
@@ -79,6 +83,7 @@ class IconFontYamlConfigItem {
     url = json['url'];
     iconName = json['icon_name'];
     iconClass = json['icon_class'];
+    fontFamily = json['font_family'];
     package = json['package'];
   }
 
@@ -87,6 +92,7 @@ class IconFontYamlConfigItem {
     data['url'] = url;
     data['icon_name'] = iconName;
     data['icon_class'] = iconClass;
+    data['font_family'] = fontFamily;
     data['package'] = package;
     return data;
   }

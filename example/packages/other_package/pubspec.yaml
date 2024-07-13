@@ -22,7 +22,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-    - family: iconfont2
+    - family: other_test_icons
       fonts:
         - asset: assets/iconfont/other_test_icons.ttf
 
@@ -32,6 +32,7 @@ iconfont:
       - url: //at.alicdn.com/t/c/font_4620020_197c3lqemwg.css
         icon_name: other_test_icons
         icon_class: OtherTestIcons
+        font_family: other_test_icons
         package: other_package
     font_assets_path: assets/iconfont/
     icon_class_path: lib/icons/

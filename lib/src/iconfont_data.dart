@@ -57,9 +57,7 @@ class IconFontData {
   }
 
   static Future<IconFontData> from(IconFontConfig config) async {
-    final jsonUrl = config.url
-        .replaceAll(r"?.*", "")
-        .replaceAll(RegExp(r"\.(js|css|ttf)$"), ".json");
+    final jsonUrl = config.url.replaceAll(r"?.*", "").replaceAll(RegExp(r"\.(js|css|ttf)$"), ".json");
     final ttfUrl = jsonUrl.replaceAll(RegExp(r"\.json$"), ".ttf");
 
     print("download json content from $jsonUrl");
@@ -70,8 +68,14 @@ class IconFontData {
     print("download ttf file from $ttfUrl to $ttfSavePath");
     await Utils.downloadToFile(ttfSavePath, ttfUrl);
 
-    return IconFontData.fromJson(json.decode(jsonContent))
-      ..fontPackage = config.fontPackage;
+    final fontData = IconFontData.fromJson(json.decode(jsonContent));
+    fontData.fontPackage = config.fontPackage;
+
+    if (config.fontFamily != null && config.fontFamily!.isNotEmpty) {
+      fontData.fontFamily = config.fontFamily!;
+    }
+
+    return fontData;
   }
 }
 

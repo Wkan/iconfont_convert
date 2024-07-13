@@ -4,11 +4,11 @@
 import 'package:flutter/material.dart';
 
 class OtherTestIcons {
-  static const String _family = 'iconfont2';
+  static const String _family = 'other_test_icons';
   static const String _package = 'other_package';
-
+  
   OtherTestIcons._();
-
+  
   static const IconData aixin = IconData(0xe8c3, fontFamily: _family, fontPackage: _package); // 爱心
   static const IconData chenggong = IconData(0xe8c4, fontFamily: _family, fontPackage: _package); // 成功
   static const IconData dianzan = IconData(0xe8c5, fontFamily: _family, fontPackage: _package); // 点赞
