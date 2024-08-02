@@ -70,6 +70,7 @@ class IconFontYamlConfigItem {
   String? iconClass;
   String? fontFamily;
   String? package;
+  late Map<String, dynamic> oriData;
 
   IconFontYamlConfigItem({
     this.url,
@@ -80,6 +81,7 @@ class IconFontYamlConfigItem {
   });
 
   IconFontYamlConfigItem.fromJson(Map<String, dynamic> json) {
+    oriData = json;
     url = json['url'];
     iconName = json['icon_name'];
     iconClass = json['icon_class'];

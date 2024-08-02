@@ -1,15 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:iconfont_convert/src/iconfont_data.dart';
 import 'package:iconfont_convert/src/pub.dart';
 import 'package:iconfont_convert/src/temp/icon_template.dart';
 import 'package:iconfont_convert/src/utils.dart';
-import 'package:path/path.dart' as path;
-import 'package:yaml/yaml.dart';
 
 import 'constants.dart';
 import 'iconfont_config.dart';
+import 'iconfont_context.dart';
 
 /// 构建图标文件
 class IconFontBuilder {
@@ -37,43 +35,37 @@ class IconFontBuilder {
   }
 
   /// 从 yaml 配置构建
-  static buildFromYamlConfig(String configPath) async {
-    var yamlConfig = jsonDecode(jsonEncode(loadYaml(File(configPath).readAsStringSync())));
-
-    if (path.basename(configPath) == Constants.pubspecConfig) {
-      yamlConfig = yamlConfig["iconfont"] ?? [];
+  static buildFromYamlConfig() async {
+    for (var element in context.iconFonts) {
+      await buildIconFontConfig(element);
     }
-
-    await Future.forEach(yamlConfig, (e) async {
-      final c = IconFontYamlConfig.fromJson(jsonDecode(jsonEncode(e)));
-      await Future.forEach<IconFontYamlConfigItem>(c.icons ?? [], (configItem) async {
-        if (configItem.url == null || configItem.url!.isEmpty) {
-          throw ArgumentError("url is empty");
-        }
-
-        if (configItem.iconName == null || configItem.iconName!.isEmpty) {
-          throw ArgumentError("icon_name is empty");
-        }
-
-        if (configItem.iconClass == null || configItem.iconClass!.isEmpty) {
-          configItem.iconClass = Utils.camel(configItem.iconName!, pascalCase: true);
-        }
-
-        await _build(IconFontConfig(
-          url: configItem.url!,
-          iconName: configItem.iconName!,
-          iconClass: configItem.iconClass!,
-          fontFamily: configItem.fontFamily,
-          fontPackage: configItem.package,
-          fontAssetsPath: c.fontAssetsPath ?? Constants.defaultFontAssetsPath,
-          iconClassPath: c.iconClassPath ?? Constants.defaultWritePath,
-        ));
-      });
-    });
   }
 
-  // static scanAndPubSave() async {
-  //   await IconFontScanner.scan();
-  //   await Pub.save();
-  // }
+  static Future<void> buildIconFontConfig(Object? e) async {
+    final c = IconFontYamlConfig.fromJson(jsonDecode(jsonEncode(e)));
+    for (final configItem in c.icons ?? []) {
+      if (configItem.url == null || configItem.url!.isEmpty) {
+        throw ConvertException("url is empty");
+      }
+
+      if (configItem.iconName == null || configItem.iconName!.isEmpty) {
+        throw ConvertException("icon_name is empty");
+      }
+
+      if (configItem.iconClass == null || configItem.iconClass!.isEmpty) {
+        configItem.iconClass =
+            Utils.camel(configItem.iconName!, pascalCase: true);
+      }
+
+      await _build(IconFontConfig(
+        url: configItem.url!,
+        iconName: configItem.iconName!,
+        iconClass: configItem.iconClass!,
+        fontFamily: configItem.fontFamily,
+        fontPackage: configItem.package,
+        fontAssetsPath: c.fontAssetsPath ?? Constants.defaultFontAssetsPath,
+        iconClassPath: c.iconClassPath ?? Constants.defaultWritePath,
+      ));
+    }
+  }
 }
